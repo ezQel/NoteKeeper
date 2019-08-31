@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">Notebook</string>
+    <string name="app_name">NoteKeeper</string>
     <string name="title_activity_note_list">NoteListActivity</string>
     <string name="note_next">next</string>
     <string name="previous">previous</string>
     <string name="send_as_email">Send as email</string>
     <string name="cancel">Cancel</string>
-    <string name="title_activity_main">NoteBook</string>
+    <string name="title_activity_main">NoteKeeper</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">NoteKeeper</string>
+    <string name="nav_header_subtitle">Short notes for Pluralsight</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 

@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity
         Menu menu = navigationView.getMenu();
         menu.findItem(R.id.nav_courses).setChecked(true);
 
-        final GridLayoutManager courseLayout = new GridLayoutManager(this, 2);
+        final GridLayoutManager courseLayout = new GridLayoutManager(this, getResources().getInteger(R.integer.tabs_number));
         recyclerNotes.setLayoutManager(courseLayout);
 
         List<CourseInfo> courses = DataManager.getInstance().getCourses();
