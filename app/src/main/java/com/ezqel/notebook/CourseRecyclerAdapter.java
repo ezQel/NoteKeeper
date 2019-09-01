@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAdapter.CourseViewHolder> {
 
-    List<CourseInfo> mCourse;
+
 
     @NonNull
     @Override
@@ -23,7 +23,7 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
 
     @Override
     public void onBindViewHolder(@NonNull CourseViewHolder courseViewHolder, int i) {
-        mCourse=DataManager.getInstance().getCourses();
+        List<CourseInfo> mCourse=DataManager.getInstance().getCourses();
         CourseInfo courseInfo = mCourse.get(i);
         courseViewHolder.courseName.setText(courseInfo.getTitle());
     }

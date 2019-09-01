@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         final GridLayoutManager courseLayout = new GridLayoutManager(this, getResources().getInteger(R.integer.tabs_number));
         recyclerNotes.setLayoutManager(courseLayout);
 
-        List<CourseInfo> courses = DataManager.getInstance().getCourses();
+        //List<CourseInfo> courses = DataManager.getInstance().getCourses();
         CourseRecyclerAdapter courseRecyclerAdapter = new CourseRecyclerAdapter();
 
         recyclerNotes.setAdapter(courseRecyclerAdapter);
@@ -121,6 +121,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
+
+
         int id = item.getItemId();
 
         if (id == R.id.nav_notes) {
