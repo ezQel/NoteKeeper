@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        //getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -134,9 +134,14 @@ public class MainActivity extends AppCompatActivity
 
             displayCourses();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.settings) {
 
-        } else if (id == R.id.nav_send) {
+            startActivity(new Intent(this, SettingsActivity.class));
+
+        } else if (id == R.id.help_feedback) {
+
+            /* TODO
+            * Link to a help and feedback web page*/
 
         }
 
