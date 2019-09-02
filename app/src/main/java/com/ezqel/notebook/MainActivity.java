@@ -1,11 +1,14 @@
 package com.ezqel.notebook;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.preference.PreferenceManager;
 import android.view.View;
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -16,6 +19,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -52,6 +58,22 @@ public class MainActivity extends AppCompatActivity
     protected void onResume() {
         super.onResume();
         noteRecyclerAdapter.notifyDataSetChanged();
+        updateNavHeader();
+    }
+
+    private void updateNavHeader() {
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View navHeader = navigationView.getHeaderView(0);
+        TextView textUserName = navHeader.findViewById(R.id.text_user_name);
+        TextView textEmailAdress = navHeader.findViewById(R.id.text_email_address);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String userName = sharedPreferences.getString("display_name","");
+        String emailAddress = sharedPreferences.getString("user_email_address","");
+
+        textUserName.setText(userName);
+        textEmailAdress.setText(emailAddress);
+
     }
 
     private void displayNotes() {

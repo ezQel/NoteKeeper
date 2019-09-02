@@ -14,21 +14,31 @@
   ~ limitations under the License.
   -->
 
-<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/messages_header">
+    <PreferenceCategory app:title="General">
 
         <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
+            app:key="display_name"
+            app:defaultValue="@string/pref_display_name"
+            app:title="@string/pref_display_name_title"
             app:useSimpleSummaryProvider="true" />
 
+        <EditTextPreference
+            android:defaultValue="@string/email_default_value"
+            android:key="user_email_address"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/email_address_title"
+            app:useSimpleSummaryProvider="true"/>
+
         <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
+            app:defaultValue="https://plus.google.com"
+            app:entries="@array/social_entries"
+            app:entryValues="@array/social_values"
+            app:key="favorite_social_network"
+            app:title="@string/pref_social_network"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
