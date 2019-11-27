@@ -2,6 +2,7 @@ package com.ezqel.notebook;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -29,13 +30,16 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private NoteRecyclerAdapter noteRecyclerAdapter;
     private RecyclerView recyclerNotes;
+    private NotekeeperOpenHelper mOpeHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(new Intent(MainActivity.this, NoteActivity.class));
             }
         });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -50,7 +55,10 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
         recyclerNotes = findViewById(R.id.notes_list);
+        mOpeHelper = new NotekeeperOpenHelper(this);
+
         displayNotes();
     }
 
@@ -105,6 +113,12 @@ public class MainActivity extends AppCompatActivity
 
         recyclerNotes.setAdapter(courseRecyclerAdapter);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        mOpeHelper.close();
+        super.onDestroy();
     }
 
     @Override
